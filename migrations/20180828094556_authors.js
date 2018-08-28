@@ -6,6 +6,7 @@ exports.up = function(knex, Promise) {
         authors.text('last_name')
         authors.text('portrait_url')
         authors.text('biograghy')
+        authors.timestamps(true, true)
     })
 };
 
