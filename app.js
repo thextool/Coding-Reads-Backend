@@ -2,7 +2,8 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 const bodyParser = require('body-parser')
-const port = parseInt(process.env.PORT || 3000);
+const port = parseInt(process.env.PORT || 3000)
+const home = require('./routes/home')
 
 app.use(cors())
 app.use(bodyParser.json())
