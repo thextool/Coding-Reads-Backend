@@ -3,17 +3,22 @@ const cors = require('cors')
 const app = express()
 const bodyParser = require('body-parser')
 const port = parseInt(process.env.PORT || 3000)
-const home = require('./routes/home')
+const authors = require('./routes/authors')
+const books = require('./routes/books')
+const authorsOfBooks = require('./routes/authors_of_books')
 
 app.use(cors())
 app.use(bodyParser.json())
+app.use('/authors', authors)
+app.use('/books', books)
+app.use('/authors_of_books', authorsOfBooks)
 
 app.listen(port)
     .on('error', console.error.bind(console))
     .on('listening', console.log.bind(console, 'Listening on ' + port));
 
 app.use((req, res, next) => {
-    const err = new Error("Not Found");
+    const err = new Error("Not Found")
     err.status = 404
     next(err)
 });
