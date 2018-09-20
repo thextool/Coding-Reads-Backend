@@ -9,4 +9,14 @@ router.get('/', (req, resp, next) => {
         .catch(next)
 })
 
+router.delete("/delete", (request, response, next) => {
+    let authorsId = request.body.author_id
+    authorsId.forEach(id => {
+        queries.deleteAuthorOfOnlyOneBook(id)
+        .then(() => {
+            response.status(204).json({deleted: true});
+        }).catch(next);
+    })
+});
+
 module.exports = router
